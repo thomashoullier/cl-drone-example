@@ -9,6 +9,7 @@ steps:
 - name: run
   image: fukamachi/sbcl:latest-alpine
   commands:
+  - apk add git
   - git status
   - ros install fukamachi/rove
   - ros install fukamachi/cl-coveralls
