@@ -4,4 +4,6 @@
 (in-package :cl-drone-example)
 
 (defun foo ()
-  64)
+  "An error must now be detected"
+  ;; 64
+  0)
