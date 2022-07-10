@@ -1,0 +1,10 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: init
+  image: fukamachi/sbcl:latest-alpine
+  commands:
+  - echo hello
+  - ros install fukamachi/rove
