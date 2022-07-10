@@ -1,4 +1,5 @@
 # Drone CI example for Common Lisp
+[![Build Status](https://drone.git-or-miss.com/api/badges/thomashoullier/cl-drone-example/status.svg?ref=refs/heads/master)](https://drone.git-or-miss.com/thomashoullier/cl-drone-example)
 
 ## Dependencies
 * fukamachi's [dockerfiles](https://github.com/fukamachi/dockerfiles)

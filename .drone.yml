@@ -10,8 +10,4 @@ steps:
   image: fukamachi/sbcl:latest-alpine
   commands:
   - ros install fukamachi/rove
-
-- name: test
-  image: fukamachi/sbcl:latest-alpine
-  commands:
   - rove cl-drone-example.asd
