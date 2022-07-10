@@ -6,8 +6,10 @@ environment:
   CL_SOURCE_REGISTRY: /drone/src/
 
 steps:
-- name: init
+- name: run
   image: fukamachi/sbcl:latest-alpine
   commands:
   - ros install fukamachi/rove
+  - ros install fukamachi/cl-coveralls
   - COVERAGE=1 rove cl-drone-example.asd
+  - coveralls report/

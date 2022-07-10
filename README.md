@@ -7,3 +7,5 @@
 ## See also
 * [jsonrpc](https://github.com/cxxxr/jsonrpc/blob/master/.travis.yml) for a
   travis example.
+* [cl-kraken](https://github.com/jonatack/cl-kraken/blob/master/.travis.yml)
+  much more complete travis example with Coveralls integration.
