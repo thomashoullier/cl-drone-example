@@ -9,6 +9,7 @@ steps:
 - name: run
   image: fukamachi/sbcl:latest-alpine
   commands:
+  - git status
   - ros install fukamachi/rove
   - ros install fukamachi/cl-coveralls
   - COVERAGE=1 rove cl-drone-example.asd
