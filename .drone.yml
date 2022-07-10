@@ -8,5 +8,10 @@ steps:
   commands:
   - ros install fukamachi/rove
   - ls -a
+  - pwd
+  - mkdir /usr/share/asdf-links && ln -sr cl-drone-example.asd /usr/share/asdf-links/
+  - ls /usr/share/asdf-links
   - rove cl-drone-example.asd
-
+  environment:
+    CL_SOURCE_REGISTRY: /usr/share/asdf-links/
+    
