@@ -10,8 +10,11 @@ steps:
   image: fukamachi/sbcl:latest-alpine
   commands:
   - apk add git
-  - git status
   - ros install fukamachi/rove
   - ros install fukamachi/cl-coveralls
   - COVERAGE=1 rove cl-drone-example.asd
   - coveralls report/
+
+# The following works:
+# COVERALLS_REPO_TOKEN=<token for the repo obtained on coveralls> CIRCLECI=1 coveralls report/
+# Upload the token on Drone.
