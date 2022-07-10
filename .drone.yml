@@ -2,13 +2,16 @@ kind: pipeline
 type: docker
 name: default
 
-image: fukamachi/sbcl:latest-alpine
-
 environment:
   CL_SOURCE_REGISTRY: /drone/src/
 
 steps:
 - name: init
+  image: fukamachi/sbcl:latest-alpine
   commands:
   - ros install fukamachi/rove
+
+- name: test
+  image: fukamachi/sbcl:latest-alpine
+  commands:
   - rove cl-drone-example.asd
