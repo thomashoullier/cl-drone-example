@@ -3,4 +3,6 @@
 ## Dependencies
 * fukamachi's [dockerfiles](https://github.com/fukamachi/dockerfiles)
 
-## References
+## See also
+* [jsonrpc](https://github.com/cxxxr/jsonrpc/blob/master/.travis.yml) for a
+  travis example.
