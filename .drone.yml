@@ -7,9 +7,6 @@ steps:
   image: fukamachi/sbcl:latest-alpine
   commands:
   - ros install fukamachi/rove
-  - ls -a
-  - pwd
   - rove cl-drone-example.asd
   environment:
     CL_SOURCE_REGISTRY: /drone/src/
-    
