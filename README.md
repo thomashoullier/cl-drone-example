@@ -8,7 +8,6 @@ is sent to Coveralls.
 
 ## Software components
 ### Pre-requisites
-You must:
 * Setup a Drone instance (for example on a VPS). It is a piece of cake,
   simply follow the documentation [1]. We are using a docker runner.
 * Connect your github account to Coveralls [2] and enable tracking for
@@ -33,6 +32,8 @@ repository. You can copy it into a Drone `secret` [3] and load it from the
 CI yaml file as an environment variable.
 
 ## Adding badges
+Both Drone and Coveralls provide links to badges.
+
 [![Build Status](https://drone.git-or-miss.com/api/badges/thomashoullier/cl-drone-example/status.svg?ref=refs/heads/master)](https://drone.git-or-miss.com/thomashoullier/cl-drone-example)
 
 [![Coverage Status](https://coveralls.io/repos/github/thomashoullier/cl-drone-example/badge.svg?branch=master)](https://coveralls.io/github/thomashoullier/cl-drone-example?branch=master)
