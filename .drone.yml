@@ -11,7 +11,7 @@ steps:
 - name: run
   image: fukamachi/sbcl:latest-alpine
   commands:
-  - apk add git
+  - apk add git file
   - ros install fukamachi/rove
   - ros install fukamachi/cl-coveralls
   - rove cl-drone-example.asd
