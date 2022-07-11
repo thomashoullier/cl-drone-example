@@ -1,4 +1,6 @@
 # Drone CI example for Common Lisp
+![work in progress](https://raw.githubusercontent.com/thomashoullier/badges/6581abd9e6843d6ad0c8a6d0be04194b861980ec/status-work-in-progress.svg)
+
 We demonstrate (and eventually troubleshoot) the use of continuous integration
 and code coverage for Common Lisp. A simple Common Lisp system is implemented
 along with a test. It is then built and tested by a CI and the coverage report
