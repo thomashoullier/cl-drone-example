@@ -4,6 +4,10 @@ name: default
 
 environment:
   CL_SOURCE_REGISTRY: /drone/src/
+  COVERAGE: 1
+  COVERALLS_REPO_TOKEN:
+    from_secret: coveralls_token
+  CIRCLECI: 1
 
 steps:
 - name: run
@@ -12,9 +16,5 @@ steps:
   - apk add git
   - ros install fukamachi/rove
   - ros install fukamachi/cl-coveralls
-  - COVERAGE=1 rove cl-drone-example.asd
+  - rove cl-drone-example.asd
   - coveralls report/
-
-# The following works:
-# COVERALLS_REPO_TOKEN=<token for the repo obtained on coveralls> CIRCLECI=1 coveralls report/
-# Upload the token on Drone.
