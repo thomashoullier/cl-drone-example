@@ -32,7 +32,7 @@ steps:
   - ls -a
   - ls -a /root
   - ls -a /drone/src
-  - cat tocache/test.txt
+  - if [ -f 'tocache/test.txt' ]; then cat tocache/test.txt; fi
   - mkdir tocache
   - echo "AAA" > tocache/test.txt
   #- rove cl-drone-example.asd
