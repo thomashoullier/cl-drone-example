@@ -29,11 +29,11 @@ steps:
   commands:
   - apk add git file
   - ros install fukamachi/rove
-  - ros install fukamachi/cl-coveralls
+  #- ros install fukamachi/cl-coveralls
   - ls -a
-  - ls -a /
-  - rove cl-drone-example.asd
-  - coveralls report/
+  - ls -a /root
+  #- rove cl-drone-example.asd
+  #- coveralls report/
   environment:
     COVERALLS_REPO_TOKEN:
       from_secret: coveralls_token
