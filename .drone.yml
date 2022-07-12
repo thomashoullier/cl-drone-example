@@ -18,8 +18,7 @@ steps:
     archive_format: "gzip"
     # filesystem_cache_root: "/tmp/cache"
     mount:
-      - '/drone/src/'
-      - '/root/.roswell/'
+      - 'tocache'
   volumes:
   - name: cache
     path: /tmp/cache
@@ -27,11 +26,15 @@ steps:
 - name: run
   image: fukamachi/sbcl:latest-alpine
   commands:
-  - apk add git file
-  - ros install fukamachi/rove
+  #- apk add git file
+  #- ros install fukamachi/rove
   #- ros install fukamachi/cl-coveralls
   - ls -a
   - ls -a /root
+  - ls -a /drone/src
+  - cat tocache/test.txt
+  - mkdir tocache
+  - echo "AAA" > tocache/test.txt
   #- rove cl-drone-example.asd
   #- coveralls report/
   environment:
@@ -48,8 +51,7 @@ steps:
     archive_format: "gzip"
     # filesystem_cache_root: "/tmp/cache"
     mount:
-      - '/drone/src'
-      - '/root/.roswell/'
+      - 'tocache'
   volumes:
   - name: cache
     path: /tmp/cache
