@@ -8,6 +8,21 @@ environment:
   CIRCLECI: 1
 
 steps:
+- name: restore-cache-with-filesystem
+  image: meltwater/drone-cache
+  pull: true
+  settings:
+    backend: "filesystem"
+    restore: true
+    cache_key: "volume"
+    archive_format: "gzip"
+    # filesystem_cache_root: "/tmp/cache"
+    mount:
+      - 'vendor'
+  volumes:
+  - name: cache
+    path: /tmp/cache
+
 - name: run
   image: fukamachi/sbcl:latest-alpine
   commands:
@@ -19,3 +34,23 @@ steps:
   environment:
     COVERALLS_REPO_TOKEN:
       from_secret: coveralls_token
+
+- name: rebuild-cache-with-filesystem
+  image: meltwater/drone-cache
+  pull: true
+  settings:
+    backend: "filesystem"
+    rebuild: true
+    cache_key: "volume"
+    archive_format: "gzip"
+    # filesystem_cache_root: "/tmp/cache"
+    mount:
+      - 'vendor'
+  volumes:
+  - name: cache
+    path: /tmp/cache
+
+volumes:
+  - name: cache
+    host:
+      path: /var/lib/cache
