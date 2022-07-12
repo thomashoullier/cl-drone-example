@@ -19,7 +19,7 @@ steps:
     # filesystem_cache_root: "/tmp/cache"
     mount:
       - '/drone/src/'
-      - '.roswell/'
+      - '/root/.roswell/'
   volumes:
   - name: cache
     path: /tmp/cache
@@ -31,6 +31,7 @@ steps:
   - ros install fukamachi/rove
   - ros install fukamachi/cl-coveralls
   - ls -a
+  - ls -a /
   - rove cl-drone-example.asd
   - coveralls report/
   environment:
@@ -48,7 +49,7 @@ steps:
     # filesystem_cache_root: "/tmp/cache"
     mount:
       - '/drone/src'
-      - '.roswell/'
+      - '/root/.roswell/'
   volumes:
   - name: cache
     path: /tmp/cache
