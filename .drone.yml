@@ -19,7 +19,7 @@ steps:
     # filesystem_cache_root: "/tmp/cache"
     mount:
       - 'tocache'
-      - 'roswell-cache'
+      - '.roswell'
   volumes:
   - name: cache
     path: /tmp/cache
@@ -55,7 +55,7 @@ steps:
     # filesystem_cache_root: "/tmp/cache"
     mount:
       - 'tocache'
-      - 'roswell-cache'
+      - '.roswell'
   volumes:
   - name: cache
     path: /tmp/cache
