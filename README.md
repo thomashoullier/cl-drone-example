@@ -1,5 +1,5 @@
 # Drone CI example for Common Lisp
-![work in progress](https://raw.githubusercontent.com/thomashoullier/badges/6581abd9e6843d6ad0c8a6d0be04194b861980ec/status-work-in-progress.svg)
+![maintained](https://raw.githubusercontent.com/thomashoullier/badges/master/status-maintained.svg)
 
 We demonstrate (and eventually troubleshoot) the use of continuous integration
 and code coverage for Common Lisp. A simple Common Lisp system is implemented
@@ -14,10 +14,6 @@ is sent to Coveralls.
   your repository.
 
 ### Used in the CI setup
-There are many moving pieces which must work together. You can simply
-run `cl-drone-example` without worrying about every piece, but this is
-what we are using:
-
 * [rove](https://github.com/fukamachi/rove): Test library for Common Lisp.
   Generates the test coverage report, which is a feature only working for
   SBCL.
@@ -54,7 +50,7 @@ You can layer the system-specific dependencies using another `RUN` entry in
 the Dockerfile.
 
 This docker image is first built/updated by Drone, and then used to run
-the tests.
+the tests [4].
 
 For this to work, you need to be an admin of your Drone instance and mark your
 repository as trusted.
@@ -64,6 +60,8 @@ Another useful feature of Drone is
 which allows caching files from one build to the next.
 
 ## Caveats
+If you see a better way of doing things, please open an issue!
+
 * `cl-coveralls` is made to work by tricking it into thinking we are
   running on CircleCI. This hack is bound to break someday.
 
