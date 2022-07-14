@@ -5,6 +5,7 @@ name: default
 environment:
   COVERAGE: 1
   CIRCLECI: 1
+  ROSWELL_HOME: '/drone/src/.roswell/'
 
 steps:
 - name: restore-cache-with-filesystem
@@ -27,12 +28,11 @@ steps:
   image: fukamachi/sbcl:latest-alpine
   commands:
   - apk add git file
-  #- if [ -d 'roswell-cache' ]; then cp -r roswell-cache/* /root/.roswell; fi
   - ls -a
-  - ROSWELL_HOME=/drone/src/.roswell/ ros setup
+  - ros setup
+  - ros setup
   #- ros setup
   #- ros install fukamachi/rove
-  #- cp -r /root/.roswell roswell-cache
   #- ros install fukamachi/cl-coveralls
   #- rove cl-drone-example.asd
   #- coveralls report/
