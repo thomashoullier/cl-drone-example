@@ -16,7 +16,6 @@ steps:
     restore: true
     cache_key: "volume"
     archive_format: "gzip"
-    # filesystem_cache_root: "/tmp/cache"
     mount:
       - 'tocache'
       - '.roswell'
@@ -30,12 +29,10 @@ steps:
   - apk add git file
   - ls -a
   - ros setup
-  - ros setup
-  #- ros setup
-  #- ros install fukamachi/rove
-  #- ros install fukamachi/cl-coveralls
-  #- rove cl-drone-example.asd
-  #- coveralls report/
+  - ros install fukamachi/rove
+  - ros install fukamachi/cl-coveralls
+  - rove cl-drone-example.asd
+  - coveralls report/
   # Text file cache example.
   - if [ -f 'tocache/test.txt' ]; then cat tocache/test.txt; fi
   - mkdir -p tocache
@@ -52,7 +49,6 @@ steps:
     rebuild: true
     cache_key: "volume"
     archive_format: "gzip"
-    # filesystem_cache_root: "/tmp/cache"
     mount:
       - 'tocache'
       - '.roswell'
