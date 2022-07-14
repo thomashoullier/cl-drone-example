@@ -9,7 +9,7 @@ steps:
   - name: dockersock
     path: /var/run/docker.sock
   commands:
-  - docker build -t cl-drone-example
+  - docker build -t cl-drone-example .
 
 - name: run
   image: cl-drone-example
