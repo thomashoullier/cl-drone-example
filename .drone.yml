@@ -3,7 +3,7 @@ type: docker
 name: default
 
 environment:
-  CL_SOURCE_REGISTRY: /drone/src/
+  ROSWELL_HOME: "$HOME/.roswell"
   COVERAGE: 1
   CIRCLECI: 1
 
@@ -27,17 +27,18 @@ steps:
   image: fukamachi/sbcl:latest-alpine
   commands:
   #- apk add git file
-  #- ros install fukamachi/rove
+  - mkdir -p $ROSWELL_HOME
+  - ros install fukamachi/rove
   #- ros install fukamachi/cl-coveralls
+  #- rove cl-drone-example.asd
+  #- coveralls report/
   - ls -a
-  - ls -a /root
-  - ls -a /drone/src
+  - ls -a ~/
+  # Text file cache example.
   - if [ -f 'tocache/test.txt' ]; then cat tocache/test.txt; fi
   - mkdir -p tocache
   - echo "AAA" > tocache/test.txt
-  #- rove cl-drone-example.asd
-  #- coveralls report/
-  environment:
+    environment:
     COVERALLS_REPO_TOKEN:
       from_secret: coveralls_token
 
