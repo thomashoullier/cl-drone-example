@@ -7,6 +7,7 @@ environment:
   CIRCLECI: 1
   ROSWELL_HOME: '/drone/src/.roswell/'
   CL_SOURCE_REGISTRY: '/drone/src'
+  XDG_CACHE_HOME: '/drone/src/.cache'
 
 steps:
 - name: restore-cache-with-filesystem
@@ -20,6 +21,7 @@ steps:
     mount:
       - 'tocache'
       - '.roswell'
+      - '.cache'
   volumes:
   - name: cache
     path: /tmp/cache
@@ -31,6 +33,7 @@ steps:
   - ls -a
   - ros setup
   - ros install fukamachi/rove
+  - ros install fukamachi/cl-coveralls
   - ros install fukamachi/cl-coveralls
   - export PATH="/drone/src/.roswell/bin:$PATH"
   - rove cl-drone-example.asd
@@ -53,6 +56,7 @@ steps:
     archive_format: "gzip"
     mount:
       - 'tocache'
+      - '.cache'
       - '.roswell'
   volumes:
   - name: cache
