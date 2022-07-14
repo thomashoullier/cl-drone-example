@@ -21,6 +21,7 @@ steps:
     COVERALLS_REPO_TOKEN:
       from_secret: coveralls_token
     COVERAGE: 1
+    COVERAGE_EXCLUDE: '/drone/src/test'
     CIRCLECI: 1
     CL_SOURCE_REGISTRY: '/drone/src'
 
