@@ -29,7 +29,7 @@ steps:
   - apk add git file
   #- if [ -d 'roswell-cache' ]; then cp -r roswell-cache/* /root/.roswell; fi
   - ls -a
-  - ROSWELL_HOME=.roswell/ ros setup
+  - ROSWELL_HOME=/drone/src/.roswell/ ros setup
   #- ros setup
   #- ros install fukamachi/rove
   #- cp -r /root/.roswell roswell-cache
