@@ -28,6 +28,7 @@ steps:
   commands:
   #- apk add git file
   - mkdir -p $ROSWELL_HOME
+  - ros setup
   - ros install fukamachi/rove
   #- ros install fukamachi/cl-coveralls
   #- rove cl-drone-example.asd
