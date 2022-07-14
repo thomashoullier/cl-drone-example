@@ -31,6 +31,12 @@ Coveralls provides a token for posting reports with respect to a given
 repository. You can copy it into a Drone `secret` [3] and load it from the
 CI yaml file as an environment variable.
 
+```yaml
+environment:
+    COVERALLS_REPO_TOKEN:
+      from_secret: coveralls_token
+```
+
 ## Adding badges
 Both Drone and Coveralls provide links to badges.
 
@@ -39,12 +45,27 @@ Both Drone and Coveralls provide links to badges.
 [![Coverage Status](https://coveralls.io/repos/github/thomashoullier/cl-drone-example/badge.svg?branch=master)](https://coveralls.io/github/thomashoullier/cl-drone-example?branch=master)
 
 ## Creating your own Docker images
-`TODO`
+It is a good idea to use a docker image to install dependencies once and for
+all, otherwise the build process will be too long (3min instead of 15sec).
+
+We use a `Dockerfile` with the bare minimum in order to test common lisp
+systems. It is built on top of the Docker image `fukamachi/sbcl:latest-alpine`.
+You can layer the system-specific dependencies using another `RUN` entry in
+the Dockerfile.
+
+This docker image is first built/updated by Drone, and then used to run
+the tests.
+
+For this to work, you need to be an admin of your Drone instance and mark your
+repository as trusted.
+
+Another useful feature of Drone is
+[drone-cache](https://github.com/meltwater/drone-cache/blob/master/README.md),
+which allows caching files from one build to the next.
 
 ## Caveats
 * `cl-coveralls` is made to work by tricking it into thinking we are
-  running on CircleCI. I don't know whether this will break anything,
-  but it is an ugly hack anyway.
+  running on CircleCI. This hack is bound to break someday.
 
 ## See also
 * [jsonrpc](https://github.com/cxxxr/jsonrpc/blob/master/.travis.yml): CL
@@ -56,3 +77,4 @@ Both Drone and Coveralls provide links to badges.
 1. [Drone documentation](https://docs.drone.io/)
 2. [Coveralls](https://coveralls.io)
 3. [Drone documentation: per repository secret](https://docs.drone.io/secret/repository/)
+4. [Drone: Build Docker image and re-use in the next step](https://discourse.drone.io/t/build-docker-image-and-re-use-in-the-next-step/6190)
