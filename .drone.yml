@@ -3,7 +3,7 @@ type: docker
 name: default
 
 environment:
-  ROSWELL_HOME: "$HOME/.roswell"
+  ROSWELL_HOME: ".roswell"
   COVERAGE: 1
   CIRCLECI: 1
 
@@ -27,14 +27,14 @@ steps:
   image: fukamachi/sbcl:latest-alpine
   commands:
   #- apk add git file
-  - mkdir -p $ROSWELL_HOME
+  - mkdir -p .roswell
+  - ls -a
   - ros setup
   - ros install fukamachi/rove
   #- ros install fukamachi/cl-coveralls
   #- rove cl-drone-example.asd
   #- coveralls report/
   - ls -a
-  - ls -a ~/
   # Text file cache example.
   - if [ -f 'tocache/test.txt' ]; then cat tocache/test.txt; fi
   - mkdir -p tocache
