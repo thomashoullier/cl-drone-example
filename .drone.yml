@@ -6,6 +6,7 @@ environment:
   COVERAGE: 1
   CIRCLECI: 1
   ROSWELL_HOME: '/drone/src/.roswell/'
+  CL_SOURCE_REGISTRY: '/drone/src'
 
 steps:
 - name: restore-cache-with-filesystem
