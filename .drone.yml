@@ -38,7 +38,7 @@ steps:
   - if [ -f 'tocache/test.txt' ]; then cat tocache/test.txt; fi
   - mkdir -p tocache
   - echo "AAA" > tocache/test.txt
-    environment:
+  environment:
     COVERALLS_REPO_TOKEN:
       from_secret: coveralls_token
 
