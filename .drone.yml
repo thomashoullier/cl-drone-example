@@ -8,6 +8,7 @@ environment:
   ROSWELL_HOME: '/drone/src/.roswell/'
   CL_SOURCE_REGISTRY: '/drone/src'
   XDG_CACHE_HOME: '/drone/src/.cache'
+  XDG_DATA_HOME: '/drone/src/.data'
 
 steps:
 - name: restore-cache-with-filesystem
@@ -22,6 +23,7 @@ steps:
       - 'tocache'
       - '.roswell'
       - '.cache'
+      - '.data'
   volumes:
   - name: cache
     path: /tmp/cache
@@ -58,6 +60,7 @@ steps:
       - 'tocache'
       - '.cache'
       - '.roswell'
+      - '.data'
   volumes:
   - name: cache
     path: /tmp/cache
