@@ -31,6 +31,7 @@ steps:
   - ros setup
   - ros install fukamachi/rove
   - ros install fukamachi/cl-coveralls
+  - export PATH="/drone/src/.roswell/bin:$PATH"
   - rove cl-drone-example.asd
   - coveralls report/
   # Text file cache example.
