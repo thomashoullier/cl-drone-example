@@ -27,11 +27,12 @@ steps:
   image: fukamachi/sbcl:latest-alpine
   commands:
   - apk add git file
-  - if [ -d 'roswell-cache' ]; then cp -r roswell-cache/* /root/.roswell; fi
+  #- if [ -d 'roswell-cache' ]; then cp -r roswell-cache/* /root/.roswell; fi
   - ls -a
+  - ROSWELL_HOME=.roswell/ ros setup
   #- ros setup
-  - ros install fukamachi/rove
-  - cp -r /root/.roswell roswell-cache
+  #- ros install fukamachi/rove
+  #- cp -r /root/.roswell roswell-cache
   #- ros install fukamachi/cl-coveralls
   #- rove cl-drone-example.asd
   #- coveralls report/
