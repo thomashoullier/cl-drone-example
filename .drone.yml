@@ -29,12 +29,12 @@ steps:
   #- apk add git file
   - mkdir -p .roswell
   - ls -a
-  - ros setup
+  #- ros setup
   - ros install fukamachi/rove
   #- ros install fukamachi/cl-coveralls
   #- rove cl-drone-example.asd
   #- coveralls report/
-  - ls -a
+  - ls -a .roswell
   # Text file cache example.
   - if [ -f 'tocache/test.txt' ]; then cat tocache/test.txt; fi
   - mkdir -p tocache
