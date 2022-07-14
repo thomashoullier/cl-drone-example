@@ -2,70 +2,29 @@ kind: pipeline
 type: docker
 name: default
 
-environment:
-  COVERAGE: 1
-  CIRCLECI: 1
-  ROSWELL_HOME: '/drone/src/.roswell/'
-  CL_SOURCE_REGISTRY: '/drone/src'
-  XDG_CACHE_HOME: '/drone/src/.cache'
-  XDG_DATA_HOME: '/drone/src/.data'
-
 steps:
-- name: restore-cache-with-filesystem
-  image: meltwater/drone-cache
-  pull: true
-  settings:
-    backend: "filesystem"
-    restore: true
-    cache_key: "volume"
-    archive_format: "gzip"
-    mount:
-      - 'tocache'
-      - '.roswell'
-      - '.cache'
-      - '.data'
+- name: build
+  image: docker
   volumes:
-  - name: cache
-    path: /tmp/cache
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - docker build -t cl-drone-example
 
 - name: run
-  image: fukamachi/sbcl:latest-alpine
+  image: cl-drone-example
+  pull: if-not-exists
   commands:
-  - apk add git file
-  - ls -a
-  - ros setup
-  - ros install fukamachi/rove
-  - ros install fukamachi/cl-coveralls
-  - ros install fukamachi/cl-coveralls
-  - export PATH="/drone/src/.roswell/bin:$PATH"
   - rove cl-drone-example.asd
   - coveralls report/
-  # Text file cache example.
-  - if [ -f 'tocache/test.txt' ]; then cat tocache/test.txt; fi
-  - mkdir -p tocache
-  - echo "AAA" > tocache/test.txt
   environment:
     COVERALLS_REPO_TOKEN:
       from_secret: coveralls_token
-
-- name: rebuild-cache-with-filesystem
-  image: meltwater/drone-cache
-  pull: true
-  settings:
-    backend: "filesystem"
-    rebuild: true
-    cache_key: "volume"
-    archive_format: "gzip"
-    mount:
-      - 'tocache'
-      - '.cache'
-      - '.roswell'
-      - '.data'
-  volumes:
-  - name: cache
-    path: /tmp/cache
+    COVERAGE: 1
+    CIRCLECI: 1
+    CL_SOURCE_REGISTRY: '/drone/src'
 
 volumes:
-  - name: cache
-    host:
-      path: /var/lib/cache
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
