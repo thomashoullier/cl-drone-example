@@ -15,6 +15,7 @@ steps:
   image: cl-drone-example
   pull: if-not-exists
   commands:
+  - export CIRCLE_SHA1=$(git rev-parse HEAD)
   - rove cl-drone-example.asd
   - coveralls report/
   environment:
